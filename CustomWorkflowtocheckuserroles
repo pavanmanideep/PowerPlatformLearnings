@@ -1,0 +1,111 @@
+using Hisol.SCS.CRM.BusinessLogic;
+using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
+using Microsoft.Xrm.Sdk.Workflow;
+using System;
+using System.Activities;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace Hisol.SCS.CRM.Workflow
+{
+    public class AlternateManagerSecurityRoleCheck : CodeActivity
+    {
+
+        #region Input Parameters 
+
+        
+        [Output("IsSecurityRoleCheckPassed")]        
+        public OutArgument<bool> IsSecurityRoleCheckPassed { get; set; }
+
+        #endregion
+
+        StringBuilder messsage = new StringBuilder();
+
+        protected override void Execute(CodeActivityContext executionContext)
+        {
+            IWorkflowContext context = executionContext.GetExtension<IWorkflowContext>();
+            IOrganizationServiceFactory servicefactory = executionContext.GetExtension<IOrganizationServiceFactory>();
+            ITracingService Trace = executionContext.GetExtension<ITracingService>();
+            IOrganizationService service = servicefactory.CreateOrganizationService(context.UserId);
+            ITracingService tracingService = executionContext.GetExtension<ITracingService>();
+
+            Guid CaseWorkerID = Guid.Empty;
+            
+            try
+            {
+                if (context.InputParameters.Contains("Target") && context.InputParameters["Target"] is Entity)
+                {
+                    Entity entity = (Entity)context.InputParameters["Target"];
+                    messsage.AppendLine("Entity:" + entity.ToString());
+
+                    if (entity.LogicalName.ToLower().Equals("scs_financialassistance"))
+                    {
+                        string roleName = "Welfare AA/AO";//specific role for assigning to Alternate Manager
+                        createlog(service, roleName);
+                        
+                        Guid userid = context.InitiatingUserId;
+                        createlog(service, userid.ToString());
+
+                        bool dummytoCheck = UserHasRole(userid, roleName, service);
+
+                        createlog(service, dummytoCheck.ToString());
+
+                        IsSecurityRoleCheckPassed.Set(executionContext, UserHasRole(userid,roleName,service));                      
+                       
+                        
+                    }
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                messsage.AppendLine("Target Doesn't Contain Financial Assistance entity");
+            }
+        }
+
+        #region Create Log
+        public void createlog(IOrganizationService service, string message)
+        {
+            try
+            {
+                Entity _annotation = new Entity("annotation");
+                _annotation.Attributes["subject"] = @"Plugin Trace Log";
+                _annotation.Attributes["mimetype"] = @"text/plain";
+                _annotation.Attributes["notetext"] = message;
+                service.Create(_annotation);
+            }
+            catch { }
+        }
+        #endregion
+
+        public static bool UserHasRole(Guid userid,string roleName,IOrganizationService service)
+        {
+            bool hasRole = false;
+            QueryExpression qe = new QueryExpression("systemuserroles");
+            qe.Criteria.AddCondition("systemuserid", ConditionOperator.Equal, userid);
+
+            LinkEntity link = qe.AddLink("role", "roleid", "roleid", JoinOperator.Inner);
+            link.LinkCriteria.AddCondition("name", ConditionOperator.Equal, roleName);
+
+            EntityCollection results = service.RetrieveMultiple(qe);
+
+           if(results.Entities.Count > 0)
+            {
+                hasRole = true;
+                return hasRole;
+            }
+            
+            return hasRole;
+            
+        }
+
+
+
+
+       
+    }
+}
