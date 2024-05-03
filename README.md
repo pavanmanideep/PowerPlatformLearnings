@@ -1,2 +1,2 @@
 # PowerPlatformLearnings
-This contains necessary documentation, code samples, PPT's...
+This contains necessary documentation, code samples.
