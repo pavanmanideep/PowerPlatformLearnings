@@ -1,0 +1,3 @@
+{
+  "AppFromDataMetaDataIdsToEntityNameMappings": "{\"%DataSourceName.AFD%\":\"Real Estates\",\"%DataSourceValue.AFD%\":\"[@'Real Estates']\",\"%SortFieldName.AFD%\":\"\\\"cr5d0_address\\\"\",\"%FilterFieldName.AFD%\":\"cr5d0_address\",\"%PrimaryNameField.AFD%\":\"cr5d0_propertyid\",\"%PrimaryNameFieldDisplayName.AFD%\":\"'Property ID'\",\"%SearchFieldName.AFD%\":\"cr5d0_address,cr5d0_propertyid\",\"%StartsWithFieldName.AFD%\":\"cr5d0_address\",\"%DeleteConfirmFieldName.AFD%\":\"cr5d0_address\",\"%SortDescending.AFD%\":\"SortDescending1\",\"%CopilotSinglePageScreen.ID%\":\"'Real Estates screen'\",\"%BrowseContainer.ID%\":\"BrowseGallery1\",\"%DetailEditContainer.ID%\":\"EditForm1\"}"
+}

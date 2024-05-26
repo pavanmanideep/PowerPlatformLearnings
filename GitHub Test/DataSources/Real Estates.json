@@ -1,0 +1,124 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr5d0_realestates",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr5d0_realestate",
+    "MaxGetRowsCount": 500,
+    "Name": "Real Estates",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr5d0_address": "Address",
+      "cr5d0_bathrooms": "Bathrooms",
+      "cr5d0_bedrooms": "Bedrooms",
+      "cr5d0_price": "Price",
+      "cr5d0_price_base": "Price (Base)",
+      "cr5d0_propertyid": "Property ID",
+      "cr5d0_realestate_AsyncOperations": "System Jobs",
+      "cr5d0_realestate_BulkDeleteFailures": "Bulk Delete Failures",
+      "cr5d0_realestate_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cr5d0_realestate_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cr5d0_realestate_ProcessSession": "Process Sessions",
+      "cr5d0_realestate_SyncErrors": "Sync Errors",
+      "cr5d0_realestateid": "Real Estate",
+      "cr5d0_status": "Status (cr5d0_status)",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status (statecode)",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Real Estates",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Real Estates (Views)",
+    "Name": "_cr5d0_realestate_views",
+    "RelatedEntityName": "Real Estates",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "417fa0ef-89b8-46f3-aaf4-4832a692358f": "Inactive Real Estates",
+      "69d113af-38c0-42a4-b528-5390a12b685b": "Real Estate Associated View",
+      "72d7da16-0b12-49a2-9f0d-45ece2a89cb5": "Real Estate Lookup View",
+      "ea9be9b9-b166-4392-b2c2-97112011828e": "Active Real Estates",
+      "ee85b298-0755-4262-b306-0410930cb9ab": "Real Estate Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Real Estates)",
+    "Name": "cr5d0_realestate_cr5d0_status",
+    "OptionSetInfoNameMapping": {
+      "614370000": "Available",
+      "614370001": "Sold",
+      "614370002": "Rented"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr5d0_status",
+        "OptionSetReferenceEntityName": "Real Estates"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr5d0_status",
+    "RelatedEntityName": "Real Estates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Real Estates)_1",
+    "Name": "cr5d0_realestate_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Real Estates"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Real Estates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Real Estates)",
+    "Name": "cr5d0_realestate_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Real Estates"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Real Estates",
+    "Type": "OptionSetInfo"
+  }
+]
